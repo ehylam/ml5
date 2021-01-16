@@ -6,7 +6,16 @@ let video;
 
 function setup() {
   createCanvas(400, 400);
-  video = createCapture(VIDEO);
+  video = createCapture(
+    {
+        audio: false,
+        video: {
+            facingMode: {
+                exact: "environment"
+            }
+        }
+    }
+  );
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
   // img = loadImage('https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 
